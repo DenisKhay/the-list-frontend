@@ -3,6 +3,10 @@ import logo from './logo.svg';
 import './App.scss';
 
 class App extends Component {
+  static go = 'SOMETHING';
+  constructor(props: any){
+    super(props);
+  }
   render() {
     return (
       <div className="App">
