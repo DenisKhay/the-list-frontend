@@ -4,7 +4,7 @@ WORKDIR /app/
 
 COPY ./build/ ./build/
 COPY ./server/ ./server/
-COPY ./package-lock.json ./
+COPY ./package*.json ./
 ENV NODE_ENV=production
 RUN ls -al -R && npm ci && npm list -depth=0
 
