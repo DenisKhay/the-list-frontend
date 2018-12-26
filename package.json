@@ -6,6 +6,7 @@
     "express": "4.16.4"
   },
   "scripts": {
+    "analyze": "source-map-explorer --html build/static/js/main.* > ../analyze.html",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -38,6 +39,7 @@
     "react": "16.6.3",
     "react-dom": "16.6.3",
     "react-scripts": "2.1.1",
+    "source-map-explorer": "1.6.0",
     "typescript": "3.1.6"
   },
   "husky": {
