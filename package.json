@@ -13,8 +13,8 @@
     "test:coverage": "react-scripts test --coverage",
     "test:ci": "CI=true react-scripts test",
     "eject": "react-scripts eject",
-    "devserver": "serve -s build",
-    "prodserver:dev": "nodemon server",
+    "serve:prod:deprecated": "serve -s build",
+    "prodserver:nodemon": "nodemon server",
     "prodserver:prod": "node server"
   },
   "eslintConfig": {
