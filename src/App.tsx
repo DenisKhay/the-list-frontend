@@ -1,12 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.scss';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.scss";
+
+import ApolloClient from "apollo-boost";
+import gql from "graphql-tag";
+
+const client = new ApolloClient({
+  uri: "http://localhost:8087/api"
+});
+
+client
+  .query({
+    query: gql`
+      {
+        books {
+          name
+          author {
+            name
+          }
+        }
+      }
+    `
+  })
+  .then(result => console.log(result));
 
 class App extends Component {
-  static go = 'SOMETHING';
-  constructor(props: any){
+  constructor(props: any) {
     super(props);
   }
+
   render() {
     return (
       <div className="App">
