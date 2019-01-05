@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './App.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Page404 } from './pages/404';
-import { HomePage } from './pages/home';
-import { LoginPage } from './pages/login';
+
+import { Page404 } from '../pages/404';
+import { HomePage } from '../pages/home';
+import { LoginPage } from '../pages/login';
 
 class App extends Component {
   constructor(props: any) {
@@ -22,5 +22,10 @@ class App extends Component {
     );
   }
 }
+// todo:
+// rearrange app files
+// understand code splitting
+// think about & add real required pages
+// add smoke tests for required pages
 
 export default App;
