@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
-import { HomePage } from '../pages/home';
-import { LoginPage } from '../pages/login';
 import { Loading } from '../components/loading';
+import HomePage from '../pages/home';
 
-const Page404 = Loadable({
-  loader: () => {
-    return (import(/* webpackChunkName: "Page404" */ '../pages/404') as Promise<
-      any
-    >).then(page => {
-      console.log('page: ', page);
-      return page;
-    });
-  },
-  loading: Loading,
-  delay: 300
-});
+const AsyncPage404 = asyncImport(() =>
+  import(/*webpackChunkName: "page_404" */ '../pages/404')
+);
+const AsyncLoginPage = asyncImport(() =>
+  import(/*webpackChunkName: "page_login" */ '../pages/login')
+);
 
 class App extends Component {
   constructor(props: any) {
@@ -31,15 +24,24 @@ class App extends Component {
           <Link to="/303">Not found</Link>
           <Link to="/">Home</Link>
           <Switch>
-            <Route path="/login" component={LoginPage} />
             <Route path="/" exact component={HomePage} />
-            <Route component={Page404} />
+            <Route path="/login" component={AsyncLoginPage} />
+            <Route component={AsyncPage404} />
           </Switch>
         </div>
       </Router>
     );
   }
 }
+
+function asyncImport(fn: () => Promise<any>): any {
+  return Loadable({
+    loader: fn,
+    loading: Loading,
+    delay: 300
+  });
+}
+
 // todo:
 // rearrange app files
 // understand code splitting
