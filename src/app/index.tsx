@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
-import Loadable from 'react-loadable';
-import { Loading } from '../components/loading';
 import HomePage from '../pages/home';
+import asyncImport from '../utils/async-import';
 
 const AsyncPage404 = asyncImport(() =>
   import(/*webpackChunkName: "page_404" */ '../pages/404')
@@ -32,14 +31,6 @@ class App extends Component {
       </Router>
     );
   }
-}
-
-function asyncImport(fn: () => Promise<any>): any {
-  return Loadable({
-    loader: fn,
-    loading: Loading,
-    delay: 300
-  });
 }
 
 // todo:
