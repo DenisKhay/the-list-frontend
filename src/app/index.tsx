@@ -4,10 +4,10 @@ import HomePage from '../pages/home';
 import asyncImport from '../utils/async-import';
 
 const AsyncPage404 = asyncImport(() =>
-  import(/*webpackChunkName: "page_404" */ '../pages/404')
+  import(/* webpackChunkName: "page_404" */ '../pages/404')
 );
 const AsyncLoginPage = asyncImport(() =>
-  import(/*webpackChunkName: "page_login" */ '../pages/login')
+  import(/* webpackChunkName: "page_login" */ '../pages/login')
 );
 
 class App extends Component {
